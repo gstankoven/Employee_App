@@ -13,7 +13,7 @@ h1 {
 button.addEmployee {
   margin: auto;
   font-size: 20px;
-  margin: 40px 0 5px 0px;
+  margin: 40px 0 15px 0px;
   border-radius: 10px;
   border: 1.5px solid rgb(0, 0, 0);
 }

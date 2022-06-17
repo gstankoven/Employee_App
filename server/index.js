@@ -32,12 +32,53 @@ app.get('/api/employees', (req, res, next) => {
 })
 
 
+//gets all of the employees in the database with a specific search
+app.get('/api/employees/search/:category/:value', (req, res, next) => {
+
+  let sql = ""
+
+  if(req.params.category === 'id'){
+    sql = "SELECT * FROM employees WHERE id=?;"
+  }
+  else if(req.params.category === 'first'){
+    sql = "SELECT * FROM employees WHERE first=?;"
+  }
+  else if(req.params.category === 'last'){
+    sql = "SELECT * FROM employees WHERE last=?;"
+  }
+  else if(req.params.category === 'job'){
+    sql = "SELECT * FROM employees WHERE job=?;"
+  }
+  else{
+    sql = "SELECT * FROM employees WHERE city=?;"
+  }
+
+  let search = req.params.value
+
+  if(search === '*'){
+    sql = "SELECT * FROM employees;"
+  }
+  
+  db.query(sql, req.params.value, (err, result) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200);
+    res.send(JSON.stringify(result))
+  })
+
+})
+
+
 //add a new employee to the database
 app.post('/api/employees/add/:id/:first/:last/:job/:city', (req, res, next) => {
 
   const sql = "INSERT INTO employees (id, first, last, job, city) VALUES (?,?,?,?,?);"
   db.query(sql, [req.params.id, req.params.first, req.params.last, req.params.job, req.params.city],(err, result) => {
+
+    if(err !== null){
+      res.status(409).send('DUPLICATE')
+    }else{
       res.status(200).send('OK')
+    }
   })
 
 

@@ -1,22 +1,24 @@
 import React, {useMemo} from 'react'
 import {useTable, useSortBy} from 'react-table'
 import './Table.css'
-import {deleteEmployee, getData} from './api.js'
+import {deleteEmployee, getData} from '../api/api.js'
 
 function Table(props) {
 
+    //memo for react tables data
     const data = useMemo(() => props.data, [props.data])
+    //memo for react tables columns
     const columns = useMemo(() => [
         {
             Header: 'Employee ID',
             accessor: 'id',
         },
         {
-            Header: 'First',
+            Header: 'First Name',
             accessor: 'first'
         },
         {
-            Header: 'Last',
+            Header: 'Last Name',
             accessor: 'last'
         },
         {
@@ -29,6 +31,7 @@ function Table(props) {
         },
     ],[])
 
+    //table hooks for adding an edit button and delete button
     const tableHooks = hooks => {
         hooks.visibleColumns.push(columns => [
             ...columns,
