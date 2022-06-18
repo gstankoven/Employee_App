@@ -37,7 +37,7 @@ function AddEmployeePopup(props) {
                 <div className='addInput'>
                     <span>First Name:</span>
                     <br/>
-                    <input style={{fontSize: '16px'}} placeholder='first name' onChange={(event) => {setFirst(event.target.value); setErrorMessage('')}}></input>
+                    <input style={{fontSize: '16px'}} placeholder='first name' onChange={(event) => {setFirst(event.target.value); setErrorMessage('')}} autoComplete='new-password'></input>
                 </div>
                 <br/>
 
@@ -45,7 +45,7 @@ function AddEmployeePopup(props) {
                 <div className='addInput'>
                     <span>Last Name:</span>
                     <br/>
-                    <input style={{fontSize: '16px'}} placeholder='last name' onChange={(event) => {setLast(event.target.value); setErrorMessage('')}}></input>
+                    <input style={{fontSize: '16px'}} placeholder='last name' onChange={(event) => {setLast(event.target.value); setErrorMessage('')}} autoComplete='new-password'></input>
                 </div>
                 <br/>
 
@@ -61,7 +61,7 @@ function AddEmployeePopup(props) {
                 <div className='addInput'>
                     <span>City:</span>
                     <br/>
-                    <input style={{fontSize: '16px'}} placeholder='city' onChange={(event) => {setCity(event.target.value); setErrorMessage('')}}></input>
+                    <input style={{fontSize: '16px'}} placeholder='city' onChange={(event) => {setCity(event.target.value); setErrorMessage('')}} autoComplete='new-password'></input>
                 </div>
                 <br/>
 
@@ -72,7 +72,8 @@ function AddEmployeePopup(props) {
                     if(id === '' || first === '' || last === '' || job === '' || city === ''){
                         setErrorMessage('Please fill out all of the inputs.')
                     }else{
-                        addEmployee(id,first,last,job,city).then(res => {console.log(res); getData(props.setData)})
+                        addEmployee(id,first,last,job,city)
+                        .then(res => {getData(props.setData)})
                         .then(res => props.setPage('main'))
                         .catch(res => setErrorMessage('The employee ID is already being used.'))
                     }

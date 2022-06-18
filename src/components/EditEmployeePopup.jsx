@@ -33,7 +33,7 @@ function EditEmployeePopup(props) {
                 <div className='addInput'>
                     <span>First Name:</span>
                     <br/>
-                    <input style={{fontSize: '16px'}} value={first} onChange={(event) => {setFirst(event.target.value); setErrorMessage('')}}></input>
+                    <input style={{fontSize: '16px'}} value={first} onChange={(event) => {setFirst(event.target.value); setErrorMessage('')}} autoComplete='new-password'></input>
                 </div>
                 <br/>
 
@@ -41,7 +41,7 @@ function EditEmployeePopup(props) {
                 <div className='addInput'>
                     <span>Last Name:</span>
                     <br/>
-                    <input style={{fontSize: '16px'}} value={last} onChange={(event) => {setLast(event.target.value); setErrorMessage('')}}></input>
+                    <input style={{fontSize: '16px'}} value={last} onChange={(event) => {setLast(event.target.value); setErrorMessage('')}} autoComplete='new-password'></input>
                 </div>
                 <br/>
 
@@ -57,7 +57,7 @@ function EditEmployeePopup(props) {
                 <div className='addInput'>
                     <span>City:</span>
                     <br/>
-                    <input style={{fontSize: '16px'}} value={city} onChange={(event) => {setCity(event.target.value); setErrorMessage('')}}></input>
+                    <input style={{fontSize: '16px'}} value={city} onChange={(event) => {setCity(event.target.value); setErrorMessage('')}} autoComplete='new-password'></input>
                 </div>
                 <br/>
 

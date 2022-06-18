@@ -36,11 +36,10 @@ export const getSearch = async (setData, category, search) => {
 export const addEmployee = async (id, first, last, job, city) => {
     
     return new Promise((resolve, reject) => {
-        axios.post(`http://localhost:8080/api/employees/add/${encodeURIComponent(id)}/${encodeURIComponent(first)}
-                    /${encodeURIComponent(last)}/${encodeURIComponent(job)}/${encodeURIComponent(city)}`)
+        axios.post(`http://localhost:8080/api/employees/add/${encodeURIComponent(id)}/${encodeURIComponent(first)}/${encodeURIComponent(last)}/${encodeURIComponent(job)}/${encodeURIComponent(city)}`)
         .then( res => {
             resolve(res.status)
-        }).catch(res => reject(res))
+        })
 
     }) 
 
@@ -51,8 +50,7 @@ export const addEmployee = async (id, first, last, job, city) => {
 export const updateEmployee = async (first, last, job, city, id) => {
     
     return new Promise((resolve, reject) => {
-        axios.put(`http://localhost:8080/api/employees/update/${encodeURIComponent(first)}/${encodeURIComponent(last)}
-                    /${encodeURIComponent(job)}/${encodeURIComponent(city)}/${encodeURIComponent(id)}`)
+        axios.put(`http://localhost:8080/api/employees/update/${encodeURIComponent(first)}/${encodeURIComponent(last)}/${encodeURIComponent(job)}/${encodeURIComponent(city)}/${encodeURIComponent(id)}`)
         .then( res => {
             resolve(res.status)
         })    
