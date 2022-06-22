@@ -39,6 +39,8 @@ export const addEmployee = async (id, first, last, job, city) => {
         axios.post(`http://localhost:8080/api/employees/add/${encodeURIComponent(id)}/${encodeURIComponent(first)}/${encodeURIComponent(last)}/${encodeURIComponent(job)}/${encodeURIComponent(city)}`)
         .then( res => {
             resolve(res.status)
+        }).catch( res => {
+            reject(res.status)
         })
 
     }) 
